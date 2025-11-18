@@ -38,3 +38,4 @@ require("lazy").setup({
 })
 
 require("config.keymaps")
+require('mini.icons').setup()
