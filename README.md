@@ -15,3 +15,4 @@ Place this repository in ~/.config
 - [X] editorconf
 - [X] treesitter.nvim
 - [X] treesitter-textobjects
+- [ ] which-key.nvim
