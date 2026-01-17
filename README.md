@@ -16,3 +16,5 @@ Place this repository in ~/.config
 - [X] treesitter.nvim
 - [X] treesitter-textobjects
 - [X] which-key.nvim
+- [X] fzf-lua
+- [X] project.nvim
