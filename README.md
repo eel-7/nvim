@@ -18,3 +18,7 @@ Place this repository in ~/.config
 - [X] which-key.nvim
 - [X] fzf-lua
 - [X] project.nvim
+
+### Plugins for LaTeX things
+- [ ] treesitter for syntax highlighting
+- [ ] vimtex
