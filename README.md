@@ -20,5 +20,5 @@ Place this repository in ~/.config
 - [X] project.nvim
 
 ### Plugins for LaTeX things
-- [ ] treesitter for syntax highlighting
-- [ ] vimtex
+- [X] treesitter for syntax highlighting
+- [X] vimtex
