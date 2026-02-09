@@ -18,6 +18,10 @@ Place this repository in ~/.config
 - [X] which-key.nvim
 - [X] fzf-lua
 - [X] project.nvim
+- [ ] lsp
+    - [ ] mason.nvim
+    - [ ] mason-lspconfig.nvim
+    - [ ] mason-tool-installer.nvim
 
 ### Plugins for LaTeX things
 - [X] treesitter for syntax highlighting
