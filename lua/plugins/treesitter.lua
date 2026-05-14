@@ -1,8 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	config = function () 
-		local configs = require("nvim-treesitter.config")
+	config = function ()
+		local configs = require("nvim-treesitter.configs")
 
 		configs.setup({
 			ensure_installed = {
@@ -14,7 +14,7 @@ return {
 			},
 			sync_install = false,
 			highlight = { enable = true },
-			indent = { enable = false },  
+			indent = { enable = false },
 			incremental_selection = {
 				enable = true,
 				keymaps = {
