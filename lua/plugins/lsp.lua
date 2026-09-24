@@ -7,7 +7,7 @@ return {
         -- Mason must be loaded before its dependents so we need to set it up here.
         -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
         { 'williamboman/mason.nvim', opts = {
-            ensure_installed = { "clangd" },
+            -- ensure_installed = { "clangd" },
         }
         },
         'williamboman/mason-lspconfig.nvim',
@@ -183,7 +183,8 @@ return {
         --  By default, Neovim doesn't support everything that is in the LSP specification.
         --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
         --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-        local original_capabilities = vim.lsp.protocol.make_client_capabilities()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        -- local original_capabilities = vim.lsp.protocol.make_client_capabilities()
         -- local capabilities = require("blink.cmp").get_lsp_capabilities(original_capabilities)
         -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
@@ -197,13 +198,19 @@ return {
         --  - settings (table): Override the default settings passed when initializing the server.
         --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
         local servers = {
-            clangd = {},
+            clangd = {
+                cmd = {
+                    "clangd",
+                    "--query-driver=/usr/bin/g++,/usr/bin/c++,/usr/bin/clang++",
+                },
+            },
             bashls = {},
             marksman = {},
             -- harper_ls= {},
             -- gopls = {},
-            -- pyright = {},
-            -- jsonls = {},
+            pyright = {},
+            jsonls = {},
+            texlab = {},
             -- rust_analyzer = {},
             -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
             --
@@ -251,7 +258,7 @@ return {
 
         require('mason-lspconfig').setup {
             ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-            tag = "v1.32.0", -- uncomment to pin to a specific release
+            -- tag = "v1.32.0", -- uncomment to pin to a specific release
             automatic_installation = false,
             handlers = {
                 function(server_name)
@@ -260,9 +267,17 @@ return {
                     -- by the server configuration above. Useful when disabling
                     -- certain features of an LSP (for example, turning off formatting for ts_ls)
                     server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                    require('lspconfig')[server_name].setup(server)
+                    -- require('lspconfig')[server_name].setup(server)
+                    vim.lsp.config(server_name, server)
                 end,
             },
         }
+        -- -- Explicit clangd setup to ensure --query-driver is applied
+        -- vim.lsp.config('clangd', {
+        --     cmd = {
+        --         "clangd",
+        --         "--query-driver=/usr/bin/g++,/usr/bin/c++,/usr/bin/clang++",
+        --     },
+        -- })
     end,
 }

@@ -24,6 +24,8 @@ Place this repository in ~/.config
     - [ ] mason.nvim
     - [ ] mason-lspconfig.nvim
     - [ ] mason-tool-installer.nvim
+- [X] dressing
+    - nicer boxes for renaming things
 
 ### Plugins for LaTeX things
 - [X] treesitter for syntax highlighting
