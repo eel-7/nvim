@@ -2,6 +2,13 @@ return {
   "lervag/vimtex",
   lazy = false,     -- we don't want to lazy load VimTeX
   tag = "v2.15", -- uncomment to pin to a specific release
+  -- keys = {
+  --   {
+  --     "<localleader>v",
+  --     <plug>(vimtex-view),
+  --     desc = "Latex synctex forward search"
+  --   }
+  -- },
   init = function()
     -- VimTeX configuration goes here, e.g.
     vim.g.vimtex_mappings_disable = { ["n"] = { "K" } } -- disable `K` as it conflicts with LSP hover
